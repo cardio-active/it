@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+<script src="js/jquery.min.js"></script>
+
+    <script>
+    function set_validator_errors(){
+        orderValidator.errorTitle = 'Per favore correggere i seguenti errori'; 
+
+        orderValidator.errorNameField = 'Nome'; 
+        orderValidator.errorNameMess = 'Inserisci il tuo nome'; 
+        
+        orderValidator.errorPhoneField = 'Telefono per la comunicazione'; 
+        orderValidator.errorPhoneMess = 'Inserisci il numero di telefono corretto'; 
+        
+        orderValidator.errorAddress = 'Inserisci l\'indirizzo corretto'; 
+        orderValidator.errorRequired = 'campo obbligatorio'; 
+        orderValidator.errorMaxLength = 'carattere massimo {1} valido'; 
+        orderValidator.errorMinLength = 'carattere minimo valido {1}'; 
+        orderValidator.errorEmailField = 'E-mail';
+        orderValidator.errorEmail = 'Email specificata non valida';
+        }
+    </script>
+    
+<script>
+
+
+
+    
+    setOffer: function (offerId) {
+        if (offerId == this._setOfferId) {
+            return ;
+        }
+        this._setOfferId = offerId;
+        if (offerId) {
+            var offer = app.offers[offerId];
+            var previousOffer = app.currentOffer;
+            app.currentOffer = offer;
+            var event = this.jq.Event("offerchange");
+            event.previousOffer = previousOffer;
+            event.currentOffer = app.currentOffer;
+            this.jq(document).trigger(event);
+            this.updatePage(offer);
+        } else {
+            $('input[name=country]').val('');
+        }
+    },
+    
+    updatePage: function(offer) {
+        $('x-newprice').html(offer.price);
+        $('x-oldprice').html(offer.price2);
+        $('x-currency').html(offer.currency.name);
+        $('input[name=offer], select[name=offer]').val(offer.id);
+        $('input[name=country]').val(offer.country.code);
+    },
+
+    blockForm: function() {
+        // Блокируем кнопки при отправке формы
+        $('input[type=submit]', $(this)).prop( 'disabled', true ).attr( 'disabled', true );
+        $('button', $(this)).prop( 'disabled', true ).attr( 'disabled', true );
+        app.incompleteOrder.lock = true;
+        clearTimeout(app.incompleteOrder.timer);
+    },
+
+    unblockForm: function() {
+        $('input[type=submit]', $(this)).prop( 'disabled', false ).attr( 'disabled', false );
+        $('button[type=submit]', $(this)).prop( 'disabled', false ).attr( 'disabled', false );
+        app.incompleteOrder.lock = false;
+        clearTimeout(app.incompleteOrder.timer);
+    }
+
+};
+
+
+</script><script src="js/form.validate.js"></script>
+<script src="js/form.incomplete.js"></script>
+<script src="js/main2.js"></script>
+
+
+
+	 <base>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title class="lt1">Preparato efficace contro l’ipertensione!</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/bxslider.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/media.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+
+    <script type="text/javascript" src="js/main.js"></script>
+   
+
+    <script src="js/bxslider.js"></script>
+    <style>
+    .hide , .flag-dropdown {display: none;}
+    .error-box{
+    color: #fff;
+    background-color: #DE5042;
+    border-radius: 5px;
+    text-align: center;
+    width: 240px;
+    font-size: 13px;
+    line-height: 20px;
+    margin:5px auto !important;
+    z-index: 100;
+    width: 100%;
+}
+</style>
+</head>
+<body>
+
+
+<div class="">
+    <header>
+        <div class="content">
+            <div class="logo"><img src="images/lotype.png" alt="" class="logotype"></div>
+            <div class="reclama">
+                <ul class="soft_touch">
+                    <li class="reklama_1">
+						100%
+                        <br>
+						<span class="lt2">organico</span>
+                    </li>
+                    <li class="reklama_2 lt3">3567 persone <br> l’hanno ordinato oggi</li>
+                </ul>
+            </div>
+            <a class="call call_me button-click dis_dec lt4">Prenotare il servizio di richiamata </a>
+            <a class="call call_me scroll_to dis_mob lt5">Prenotare il servizio di richiamata </a>
+            <div class="clear"></div>
+        </div>
+    </header>
+    <section>
+        <div class="block_1">
+            <div class="content">
+                <p class="bl1_title">CardioActive<sup class="head">©</sup>:
+					<span class="lt6">normalizza la pressione sanguigna <br></span>
+				</p>
+                <p class="bl1_title_after lt7"> <br></p>
+                <div class="head_form">
+                    <div class="head_form_1">
+                        <ul class="h_f_ul">
+                            <li class="h_f_li_1 lt8">Normalizza la pressione sanguigna <br> e il benessere sin dalla prima assunzione!</li>
+                            <li class="h_f_li_2 lt9">Pulisce <br> i vasi sanguigni dal colesterolo,<br> ripristina il tono e l'elasticità</li>
+                            <li class="h_f_li_3 lt10"> Sicuro a qualsiasi età,<br> efficace in tutte le fasi <br> dell'ipertensione </li>
+                        </ul>
+                    </div>
+                    <img src="images/paced.png" alt="" class="paced_form">
+                    <div class="clear dis_mob"></div>
+                    <div class="head_form_2 new_999 new_480">
+                        <div class="form_content_head">
+                            <div class="form_title">
+                                <p class="left_t_f lt11">La quantità di confezioni nel<br>magazzino più vicino è limitata:</p>
+                                <p class="right_t_f">18<span class="sht lt12">Con.</span></p>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="form_price">
+                                <ul class="price">
+                                    <li class="price_1">
+										<span class="lt13">Prezzo</span>
+                                        <br>
+										<span class="lt14">per l’esposrtazione:</span>
+                                        <br>
+                                        <span class="bold_s_28"><span class="x_price_previous price_old oldPriceAndLabelForLandingInfoApi"><x-oldprice>78</x-oldprice> <x-currency>€</x-currency></span> </span>
+                                    </li>
+                                    <li class="price_2">
+                                        <span class="lt15">Prezzo con</span>
+                                        <br>
+										<span class="lt16">lo sconto:</span>
+                                        <br>
+                                        <span class="bold_s_28"><span class="x_price_current price_main priceAndLabelForLandingInfoApi"><x-newprice>39</x-newprice> <x-currency>€</x-currency></span> </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <form action="https://healthbestblog.space/cpatl/api.php" class="x_order_form order_form  form_top clearfix" method="post">
+                                   
+    <select name="offer" class="form-control country_chang" style="display: none;">
+        <option data-country-code="IT" selected="selected" value="21482">
+            Италия        </option>
+    </select>
+
+                                    <label class="form_container">
+                                    <span class="input_name lt18">Inserite il vostro nome</span>
+                                    <i class="icon icon_user"></i>
+                                    <input type="text" name="name" class="input__inner x_client_name" placeholder="Nome" required>
+                                </label>
+                                <label class="form_container">
+                                    <span class="input_name lt19">Inserite il vostro numero di telefono</span>
+                                    <i class="icon icon_phone"></i>
+                                    <input type="tel" name="phone" class="input__inner x_client_phone" placeholder="" required>
+                                </label>
+                                <button type="submit" class="form_btn lt20">Ordinare</button>
+                                   <input type="hidden" name="stream_hid" value="jKOUmb54">
+      <input type="hidden" name="offer_id" value="5196">
+
+      
+      <input type="hidden" name="country" value="IT"> 
+
+      <input type="hidden" name="sid1" value="alex">
+      <input type="hidden" name="sid2" value="alex2">
+      <input type="hidden" name="sid3" value="alex3">
+      <input type="hidden" name="redirect_url" value="https://amazinghealth.github.io/germitox-ita/success/index.html">
+                            </form>
+                            <img src="images/security.png" alt="" class="control">
+                        </div>
+                    </div>
+                    <img src="images/sale.png" alt="" class="sale_240">
+                    <div class="head_form_2 new_999 dis_bl_480">
+                        <div class="form_content_head">
+                            <div class="form_title">
+                                <p class="left_t_f lt11">La quantità di confezioni nel<br>magazzino più vicino è limitata:</p>
+                                <p class="right_t_f">18<span class="sht lt12">Con.</span></p>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="form_price">
+                                <ul class="price">
+                                    <li class="price_1">
+										<span class="lt13">Prezzo</span>
+                                        <br>
+										<span class="lt14">per l’esposrtazione:</span>
+                                        <br>
+                                        <span class="bold_s_28"><span class="x_price_previous price_old oldPriceAndLabelForLandingInfoApi"><x-oldprice>78</x-oldprice> <x-currency>€</x-currency></span></span>
+                                    </li>
+                                    <li class="price_2">
+										<span class="lt15">Prezzo con</span>
+                                        <br>
+										<span class="lt16">lo sconto:</span>
+                                        <br>
+                                        <span class="bold_s_28"><span class="x_price_current price_main priceAndLabelForLandingInfoApi"><x-newprice>39</x-newprice> <x-currency>€</x-currency></span></span>
+                                    </li>
+                                </ul>
+                            </div>
+                           <form action="https://healthbestblog.space/cpatl/api.php" class="x_order_form order_form  form_top clearfix" method="post">
+                                  
+    <select name="offer" class="form-control country_chang" style="display: none;">
+        <option data-country-code="IT" selected="selected" value="21482">
+            Италия        </option>
+    </select>
+
+                                    <label class="form_container">
+                                    <span class="input_name lt18">Inserite il vostro nome</span>
+                                    <i class="icon icon_user"></i>
+                                    <input type="text" name="name" class="input__inner x_client_name" placeholder="Nome" required>
+                                </label>
+                                <label class="form_container">
+                                    <span class="input_name lt19">Inserite il vostro numero di telefono</span>
+                                    <i class="icon icon_phone"></i>
+                                    <input type="tel" name="phone" class="input__inner x_client_phone" placeholder="" required>
+                                </label>
+                                <button type="submit" class="form_btn lt20">Ordinare</button>
+                                 <input type="hidden" name="stream_hid" value="jKOUmb54">
+      <input type="hidden" name="offer_id" value="5196">
+
+      
+      <input type="hidden" name="country" value="IT"> 
+
+      <input type="hidden" name="sid1" value="alex">
+      <input type="hidden" name="sid2" value="alex2">
+      <input type="hidden" name="sid3" value="alex3">
+      <input type="hidden" name="redirect_url" value="https://amazinghealth.github.io/germitox-ita/success/index.html">
+                            </form>
+                            <img src="images/security.png" alt="" class="control add_03">
+                            <img src="images/control_form.png" alt="" class="control add_04">
+                        </div>
+                        <img src="images/arrow.png" alt="" class="arrow_form">
+                        <img src="images/pac_form_480.png" alt="" class="pacet_fomr_480">
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="block_2">
+            <div class="content">
+                <div class="bl2_content">
+                    <p class="bl_2_title lt21">Controllatevi!<br>Avete almeno uno di questi sintomi?</p>
+                    <div class="content_bl2">
+                        <ul class="bl2_content1">
+                            <li class="bl_2_li_content_left_1 pad_240 lt22">Mal di <br>testa</li>
+                            <li class="bl_2_li_content_left_2 pad_240 lt23">Punti neri<br>davanti agli occhi (mosche)</li>
+                            <li class="bl_2_li_content_left_3 lt24">Apatia,<br>nervosismo,<br>sonnolenza</li>
+                            <li class="bl_2_li_content_left_4 pad_240 lt25">Vista<br>offuscata</li>
+							<li class="bl_2_li_content_left_5"><br><span class="lt26">Sudorazione</span><br><br></li>
+                        </ul>
+                        <ul class="bl2_content2 bl2_content2_240">
+                            <li class="bl_2_li_content_right_1 pad_240 lt27">Battito cardiaco<br>velocizzato</li>
+                            <li class="bl_2_li_content_right_2 pad_240 lt28">Stanchezza<br>cronica</li>
+                            <li class="bl_2_li_content_right_3 pad_240 lt29">Viso<br>gonfio</li>
+                            <li class="bl_2_li_content_right_4 pad_240 lt30">Perdita di sensibilià<br>delle dita</li>
+                            <li class="bl_2_li_content_right_5 pad_240 lt31">Sbalzi<br>di pressione</li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="after_ul_bl2">
+                        <p class="title_after_ul_bl2 lt32">SI TRATTA DI IPERTENSIONE!</p>
+                        <p class="you_mast_know lt33">Importante da sapere!<br>il 67% di chi soffre di ipertensione in<br>Italia<br>non sospetta neanche<br>di essere<br>malato.</p>
+                    </div>
+                    <img src="images/men.png" alt="" class="men">
+                </div>
+            </div>
+        </div>
+        <div class="block_3">
+            <div class="content">
+                <p class="bl3_title lt34">Perché l’ipertensione è pericolosa?</p>
+                <img src="images/wiki.png" alt="" class="wiki">
+                <p class="wiki_after_title lt35">Nell’  89% dei casi l’ipertensione si conclude in infarto. Nei vasi sanguigni si forma un tappo.<br>C’è grande possibilità di ritrovarsi con un ictus.</p>
+                <p class="wiki_after_content lt36">Le conseguenze sono particolarmente pericolose in caso si fumi, si consumino bevande alcoliche, si segua una cattiva alimentazione, uno stile di vita sedentario, forti stress, un alto livello di colesterolo. Le persone con peso in eccesso soffrono di ipertensione molto più frequentemente.</p>
+                
+            </div>
+        </div>
+
+        <div class="bl_5 dis_dec">
+            <div class="content">
+                <p class="bl5_title lt40">Gli ingredienti naturali al 100% di CardioActive  <span>per la salute del cuore e dei vasi sanguigni:</span></p>
+                <ul class="ul_bl5">
+                    <li class="bl5_li li_bl5_1">
+                         <span class="regular_ul lt43">Estratto di frutta biancospino</span>
+                        <br>
+						<span class="lt44"> Rimuove le placche di colesterolo dalle pareti delle arterie e migliora la circolazione del sangue ai tessuti e al cuore.  Ripristina l'elasticità dei vasi sanguigni e dei capillari.</span>
+					</li>
+                    <li class="bl5_li li_bl5_2">
+                    	<span class="regular_ul lt41">Estratto di Motherwort</span>
+                        <br>
+						<span class="lt42">Allevia gli spasmi vascolari e normalizza la pressione sanguigna.  Elimina nervosismo, mancanza di respiro, mal di testa e acufene.  Migliora l'umore e normalizza il sonno.</span>
+                       
+                    </li>
+                    <li class="bl5_li li_bl5_3">
+                        <span class="regular_ul lt83">Estratto di frutta di luppolo</span>
+                        <br>
+						<span class="lt45"> Diluisce il sangue, elimina i piccoli aneurismi, normalizza la frequenza cardiaca.  Previene lo sviluppo di malattie cardiovascolari: infarto, ictus, ecc.</span>
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+                <div class="clear"></div>
+                <ul class="ul_bl5_1">
+                    <li class="bl5_li li_bl5_4">
+                        <span class="regular_ul lt46">Estratti di iperico e fiori di tiglio</span>
+                        <br> 
+						<span class="lt47"> Rafforzare e ripristinare le pareti dei vasi sanguigni, eliminando tutti i micro-danni</span>
+                    </li>
+                    <li class="bl5_li li_bl5_5">
+                        <span class="regular_ul lt48">Estratto di Equiseto</span>
+                        <br>
+						<span class="lt49"> Contiene flavonoidi benefici che hanno effetti benefici su tessuti e cellule.  Migliora la funzione cardiaca, normalizza l'equilibrio sale-acqua, ha un pronunciato effetto antisclerotico e antiossidante.</span>
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="bl_5 dis_mob">
+            <div class="content">
+                <p class="bl5_title lt84">Tra gli ingredienti di CardioActive<sup class="sup_f_size">©</sup> <span class="lt40">ci sono i seguenti elementi:</span></p>
+                <ul class="ul_bl5">
+                    <li class="bl5_li li_bl5_1">
+                       <span class="regular_ul lt43">Biancospino</span>
+                        <br> 
+						CardioActive<sup class="sup_f_size">©</sup> <span class="lt44"> Rimuove le placche di colesterolo dalle pareti delle arterie e migliora la circolazione del sangue ai tessuti e al cuore.  Ripristina l'elasticità dei vasi sanguigni e dei capillari.</span>
+					</li>
+                    <li class="bl5_li li_bl5_2">
+                    	 <span class="regular_ul lt41">Estratto di Motherwort</span>
+                        <br>
+						CardioActive<sup class="sup_f_size">©</sup> <span class="lt42"> Allevia gli spasmi vascolari e normalizza la pressione sanguigna.  Elimina nervosismo, mancanza di respiro, mal di testa e acufene.  Migliora l'umore e normalizza il sonno.</span>
+                        
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+                <ul class="ul_bl5">
+                    <li class="bl5_li li_bl5_3">
+                        <span class="regular_ul lt83">Estratto di frutta di luppolo</span>
+                        <br>
+						CardioActive<sup class="sup_f_size">©</sup> <span class="lt45"> Diluisce il sangue, elimina i piccoli aneurismi, normalizza la frequenza cardiaca.  Previene lo sviluppo di malattie cardiovascolari: infarto, ictus, ecc.</span>
+                    </li>
+                    <li class="bl5_li li_bl5_4">
+                        <span class="regular_ul lt46">Estratti di iperico e fiori di tiglio</span>
+                        <br>
+						CardioActive<sup class="sup_f_size">©</sup> <span class="lt47"> Rafforzare e ripristinare le pareti dei vasi sanguigni, eliminando tutti i micro-danni</span>
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+                <div class="clear"></div>
+                <ul class="ul_bl5_1">
+                    <li class="bl5_li li_bl5_5">
+                        <span class="regular_ul lt48">Estratto di Equiseto</span>
+                        <br> CardioActive<sup class="sup_f_size">©</sup> <span class="lt49"> Contiene flavonoidi benefici che hanno effetti benefici su tessuti e cellule.  Migliora la funzione cardiaca, normalizza l'equilibrio sale-acqua, ha un pronunciato effetto antisclerotico e antiossidante. </span>
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div class="bl_11">
+            <div class="content">
+                <div class="bl_11_content">
+					<p class="bl_11_title"><span class="lt71">Vantaggi</span> CardioActive<sup class="f_s_240">©</sup></p>
+                    <ul class="ul_bl11 clearfix">
+                        <li class="li_bl11_1">
+                            <span class="bold lt72">Aiuto rapido.</span>
+                            <br>
+							<span class="lt73">La pressione sanguigna si è normalizza già  entro 30 minuti dall'assunzione! </span>
+                        </li>
+                        <li class="li_bl11_2">
+                            <span class="bold lt74">Non provoca improvvisi <br>sbalzi di pressione.</span>
+                            <br>
+							<span class="lt75">Regola in maniera armonica il funzionamento del cuore.</span>
+                        </li>
+                        <li class="li_bl11_3">
+                            <span class="bold lt76">Cura complessiva.</span>
+                            <br>
+							<span class="lt77">Elimina l’angina pectoris, l’aritmia, la nevrosi, migliora la memoria, ridona una comunicazione e un movimento corretto dopo un ictus.</span>
+                        </li>
+                        <li class="li_bl11_4">
+                            <span class="bold lt78">Azione efficace senza effetti collaterali.</span>
+                            <br> 
+							<span class="lt79">Le cellule vive dei vegetali sono completamente compatibili con quelle umane.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bl_12">
+            <div class="content">
+                <div class="bl12_frame">
+                    <p class="bl_12_frame_title lt80">Modo di assunzione</p>
+                    <p class="bl_12_frame_content lt81">Agitare il flacone e diluire 15-20 gocce di CardioActive in 50 ml di acqua.  Prendi due volte al giorno mezz'ora prima dei pasti.  Attenzione: il risultato migliore si ottiene durante l'assunzione del prodotto durante il corso, la durata minima è di 30 giorni.  Dopo una pausa di due settimane, puoi ripetere il corso. </p>
+                    <img src="images/women.png" alt="" class="women d_n_48_0 women1">
+                </div>
+            </div>
+            <img src="images/women_2.png" alt="" class="women d_b_48_0">
+        </div>
+        <div class="bl_7 bl_16" id="yacor">
+            <div class="content">
+                <div class="bl_7_content dis_dec">
+                    <div class="head_form form_content">
+                        <div class="this_form_left">
+                            <img src="images/sale.png" alt="" class="sale_70">
+                            <div class="form_price">
+                                <div class="form_title1">
+                                    <p class="left_t_f1 lt11">La quantità di confezioni nel<br>magazzino più vicino è limitata:</p>
+                                    <p class="right_t_f1">18<span class="sht">Con.</span></p>
+                                    <div class="clear"></div>
+                                </div>
+                                <ul class="price form_price" style="display: flex;">
+                                    <li class="price_1 pr_form1">
+										<span class="lt13">Prezzo</span>
+                                        <br>
+										<span class="lt14">per l’esposrtazione:</span>
+                                        <br>
+                                        <span class="bold_s_28 pr_form2"><span class="x_price_previous price_old oldPriceAndLabelForLandingInfoApi"><x-oldprice>78</x-oldprice> <x-currency>€</x-currency></span> </span>
+                                    </li>
+                                    <li class="price_2 pr_form1">
+                                        <span class="lt15">Prezzo con</span>
+                                        <br>
+										<span class="lt16">lo sconto:</span>
+                                        <br>
+                                        <span class="bold_s_28 pr_form2"><span class="x_price_current price_main priceAndLabelForLandingInfoApi"><x-newprice>39</x-newprice> <x-currency>€</x-currency></span> </span>
+                                    </li>
+                                    <img src="images/control_form.png" alt="" class="control_form">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="paced_fomr_pac">
+                            <img src="images/pac_form.png" alt="" class="fomr_paced">
+                        </div>
+                        <div class="head_form_2">
+                            <div class="form_content_head form_co_head_1">
+                                 <form action="https://healthbestblog.space/cpatl/api.php" class="x_order_form order_form  form_top1 clearfix" method="post"> <span class="input_name new_size_for_name lt82">Inserite i vostri dati nel modulo sottostante:</span>
+                                       
+    <select name="offer" class="form-control country_chang" style="display: none;">
+        <option data-country-code="IT" selected="selected" value="21482">
+            Италия        </option>
+    </select>
+
+                                        <label class="form_container new_form_conteiner">
+                                        <span class="input_name new_size_for_name lt18">Inserite il vostro nome</span>
+                                        <i class="icon1 icon_user"></i>
+                                        <input type="text" name="name" class="input__inner input__inner_1 x_client_name" placeholder="Nome" required>
+                                    </label>
+                                    <label class="form_container">
+                                        <span class="input_name new_size_for_name lt19">Inserite il vostro numero di telefono</span>
+                                        <i class="icon1 icon_phone"></i>
+                                        <input type="tel" name="phone" class="input__inner input__inner_1 x_client_phone" placeholder="" required>
+                                    </label>
+                                    <button type="submit" class="form_btn1 lt20">Ordinare</button>
+                                      <input type="hidden" name="stream_hid" value="jKOUmb54">
+      <input type="hidden" name="offer_id" value="5196">
+
+      
+      <input type="hidden" name="country" value="IT"> 
+
+      <input type="hidden" name="sid1" value="alex">
+      <input type="hidden" name="sid2" value="alex2">
+      <input type="hidden" name="sid3" value="alex3">
+      <input type="hidden" name="redirect_url" value="https://amazinghealth.github.io/germitox-ita/success/index.html">
+                                </form>
+                            </div>
+                            <ul class="sec_data_base sec_data_base1">
+                                
+                            </ul>
+                            <img src="images/arrow.png" alt="" class="arrow_form">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <img src="images/sale.png" alt="" class="sale_240">
+                <div class="head_form_2 new_999 dis_mob">
+                    <div class="form_content_head">
+                        <div class="form_title">
+                            <p class="left_t_f lt11">La quantità di confezioni nel<br>magazzino più vicino è limitata:</p>
+                            <p class="right_t_f">18<span class="sht">Сon.</span></p>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="form_price">
+                            <ul class="price">
+                                <li class="price_1">
+									<span class="lt13">Prezzo</span>
+                                    <br>
+									<span class="lt14">per l’esposrtazione:</span>
+                                    <br>
+                                    <span class="bold_s_28"><span class="x_price_previous price_old oldPriceAndLabelForLandingInfoApi"><x-oldprice>78</x-oldprice> <x-currency>€</x-currency></span> </span>
+                                </li>
+                                <li class="price_2">
+                                    <span class="lt15">Prezzo con</span>
+                                    <br>
+									<span class="lt16">lo sconto:</span>
+                                    <br>
+                                    <span class="bold_s_28"><span class="x_price_current price_main priceAndLabelForLandingInfoApi"><x-newprice>39</x-newprice> <x-currency>€</x-currency></span> </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <form action="https://healthbestblog.space/cpatl/api.php" class="x_order_form order_form  form_top clearfix" method="post">
+                                  
+    <select name="offer" class="form-control country_chang" style="display: none;">
+        <option data-country-code="IT" selected="selected" value="21482">
+            Италия        </option>
+    </select>
+
+                                    <label class="form_container">
+                                    <span class="input_name lt18">Inserite il vostro nome</span>
+                                    <i class="icon icon_user"></i>
+                                    <input type="text" name="name" class="input__inner x_client_name" placeholder="Nome" required>
+                                </label>
+                                <label class="form_container">
+                                    <span class="input_name lt19">Inserite il vostro numero di telefono</span>
+                                    <i class="icon icon_phone"></i>
+                                    <input type="tel" name="phone" class="input__inner x_client_phone" placeholder="" required>
+                                </label>
+                                <button type="submit" class="form_btn lt20">Ordinare</button>
+                                 <input type="hidden" name="stream_hid" value="jKOUmb54">
+      <input type="hidden" name="offer_id" value="5196">
+
+      
+      <input type="hidden" name="country" value="IT"> 
+
+      <input type="hidden" name="sid1" value="alex">
+      <input type="hidden" name="sid2" value="alex2">
+      <input type="hidden" name="sid3" value="alex3">
+      <input type="hidden" name="redirect_url" value="https://amazinghealth.github.io/germitox-ita/success/index.html">
+                            </form>
+                        <img src="images/security.png" alt="" class="control add_03">
+                        <img src="images/control_form.png" alt="" class="control add_04">
+                    </div>
+                    <ul class="sec_data_base">
+                        
+                    </ul> <img src="images/arrow.png" alt="" class="arrow_form">
+                    <img src="images/pac_form_480.png" alt="" class="pacet_fomr_480">
+                    <div class="clear"></div>
+                </div>
+               
+                <div class="footer_left d_n_48_0">
+                    
+                </div>
+                <div class="footer_right d_n_48_0">
+					<p class="f_l_1"><div style="text-align: center; padding: 20px; font-size: 18px;">
+            <p>OOO "OSTROV PRODAZH" OGRN: 1197746695530 VAT: 7708365555</p>
+<p>129090, Moscow, pereulok Zhivarev, house 8, stroenie 3, flat 16 email: ostrov.prodazh@mail.com Skype: ostrov.prodazh@mail.com</p> 
+
+
+    
+            <p class="conf-link doclinks">
+        <a class="nav-link" href="" onclick="window.open('/policy_en.php'); return false;">Privacy Policy</a>
+          |
+        <a class="nav-link" href="" onclick="window.open('/terms_en.php'); return false;">Terms & Conditions</a>
+      </p>
+      
+    
+          </div></p>
+                </div>
+                <div class="clear d_n_48_0"></div>
+            </div>
+        </div>
+    </section>
+</div>    
+    
+    <div class="popup-first">
+        <div class="modal-first" onclick="$('.popup-first').css('display','none');">
+        </div>
+        <div class="mod">
+            <div class="content">
+                <div class="bl_7_content">
+                    <div class="head_form form_content">
+                        <div class="this_form_left">
+                            <img src="images/sale.png" alt="" class="sale_70">
+                            <div class="form_price">
+                                <div class="form_title1">
+                                    <p class="left_t_f1 lt11">La quantità di confezioni nel<br>magazzino più vicino è limitata:</p>
+                                    <p class="right_t_f1"><i>18<span class="sht">Con.</span></i></p>
+                                    <div class="clear"></div>
+                                </div>
+                                <ul class="price form_price" style="display: flex;">
+                                    <li class="price_1 pr_form1">
+										<span class="lt13">Prezzo</span>
+                                        <br>
+										<span class="lt14">per l’esposrtazione:</span>
+                                        <br>
+                                        <span class="bold_s_28 pr_form2"><span class="x_price_previous price_old oldPriceAndLabelForLandingInfoApi"><x-oldprice>78</x-oldprice> <x-currency>€</x-currency></span> </span>
+                                    </li>
+                                    <li class="price_2 pr_form1">
+										<span class="lt15">Prezzo con</span>
+                                        <br>
+										<span class="lt16">lo sconto:</span>
+                                        <br>
+                                        <span class="bold_s_28 pr_form2"><span class="x_price_current price_main priceAndLabelForLandingInfoApi"><x-newprice>39</x-newprice> <x-currency>€</x-currency></span> </span>
+                                    </li>
+                                    <img src="images/control_form.png" alt="" class="control_form">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="paced_fomr_pac">
+                            <img src="images/pac_form.png" alt="" class="fomr_paced">
+                        </div>
+                        <div class="head_form_2">
+                            <div class="form_content_head form_co_head_1">
+                                <form action="https://healthbestblog.space/cpatl/api.php" class="x_order_form order_form  form_top1 clearfix" method="post"> <span class="input_name new_size_for_name lt82">Inserite i vostri dati nel modulo sottostante:</span>
+                                       
+    <select name="offer" class="form-control country_chang" style="display: none;">
+        <option data-country-code="IT" selected="selected" value="21482">
+            Италия        </option>
+    </select>
+
+                                        <label class="form_container new_form_conteiner">
+                                        <span class="input_name new_size_for_name lt18">Inserite il vostro nome</span>
+                                        <i class="icon1 icon_user"></i>
+                                        <input type="text" name="name" class="input__inner input__inner_1 x_client_name" placeholder="Nome" required>
+                                    </label>
+                                    <label class="form_container">
+                                        <span class="input_name new_size_for_name lt19">Inserite il vostro numero di telefono</span>
+                                        <i class="icon1 icon_phone"></i>
+                                        <input type="tel" name="phone" class="input__inner input__inner_1 x_client_phone" placeholder="" required>
+                                    </label>
+                                    <button type="submit" class="form_btn1 lt20">Ordinare</button>
+                                      <input type="hidden" name="stream_hid" value="jKOUmb54">
+      <input type="hidden" name="offer_id" value="5196">
+
+      
+      <input type="hidden" name="country" value="IT"> 
+
+      <input type="hidden" name="sid1" value="alex">
+      <input type="hidden" name="sid2" value="alex2">
+      <input type="hidden" name="sid3" value="alex3">
+      <input type="hidden" name="redirect_url" value="https://amazinghealth.github.io/germitox-ita/success/index.html">
+                                </form>
+                            </div>
+                            <ul class="sec_data_base sec_data_base1">
+                                
+                            </ul>
+                            <img src="images/arrow.png" alt="" class="arrow_form">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!--Счетчики метрик для вебмастеров-->
+
+
+
+
+
+</body>
+</html>
